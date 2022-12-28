@@ -1,0 +1,156 @@
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(../assets/images/frame-g98bc56305_1920.jpg);
+    background-size: 100vw;
+    padding-top: 150px;
+    font-family: monospace;
+    font-size: 1.3rem;
+    text-align: center;
+    user-select: none;
+}
+
+.card{
+    width: 280px;
+    height: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #EED09D;
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px black;
+    position: relative;
+}
+
+.card__title{
+    margin-bottom: 10px;
+}
+
+.number{
+    font-size: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    transition: transform 1s;
+}
+
+.btn{
+    font-family: monospace;
+    font-size: 1rem;
+    padding: .7em .5em;
+    border-radius: 5px;
+    border: none;
+    background-color: #eeaf43;
+    cursor: pointer;
+}
+
+.btn:hover{
+    outline: 1px solid rgba(0, 0, 0, 0.479);
+}
+
+/* EMPECEMOS CON LO DIVERTIDO */
+
+
+.number--active{
+    transform: rotate(360deg);
+}
+
+.card--active::before{
+    content: "MODAL CONTENT";
+    width: 250px;
+    height: 250px;
+    display: block;
+    position: absolute;
+    z-index: 10;
+    margin-left: -6px;
+    background-color: black;
+    color: #EED09D;
+    border-radius: 10px;
+    padding: 0 .5em;
+    padding-top: 7em;
+    font-size: 1.5rem;
+}
+
+.card--active::after{
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.473);
+    color: red;
+}
+
+.btn-closed{
+    display: none;
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border-radius: 50%;
+    border: none;
+    position: absolute;
+    z-index: 10;
+    right: 30px;
+    top: 30px;
+    border: 1px solid white;
+    background-color: transparent;
+    outline: none;
+}
+
+.btn-closed--active{
+    display: block;
+}
+
+.btn-closed::before,
+.btn-closed::after{
+    content: "";
+    width: 15px;
+    height: 1px;
+    position: absolute;
+    z-index: 10;
+    background-color: white;
+    left: 4px;
+    cursor: pointer;
+    top: 11px;
+}
+
+.btn-closed:active{
+    background-color: red;
+}
+
+/* .btn-closed:active::after,
+.btn-closed:active::before{
+    background-color: red;
+} */
+
+@media (hover: hover){
+    .btn-closed:hover::after,
+    .btn-closed:hover::before{
+        background-color: red;
+    }
+}
+
+.btn-closed::after{
+    transform: rotate(45deg);
+}
+
+.btn-closed::before{
+    transform: rotate(-45deg);
+}
+
+/* cosa rara con number... intento xD.
+
+Conclusiones: Tengo que usar si o si un puente con la clase  card--active
+            o btn-closed--active
+*/
+
+
+.card--active > p{
+    position: absolute;
+    z-index: 15;
+    left: 130px;
+    /* font-size: 3.5rem; */
+    color: #EED09D;
+}
